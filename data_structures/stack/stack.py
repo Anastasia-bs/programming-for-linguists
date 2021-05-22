@@ -49,3 +49,5 @@ class Stack:
                  False if stack contains elements
         """
         return not bool(self.size())
+    
+    # ограничение по количеству объектов в стеке
