@@ -13,14 +13,24 @@ class Stack:
     """
     # pylint: disable=missing-module-docstring
     def __init__(self, data: Iterable = None):
-        self.data = list(data) if data else []
+        self._size = 10
+        if data:
+            if len(data) <= self._size:
+                self.data = list(data)
+            else:
+                print(f'Stack size must not be over {self._size}.')
+        else:
+            self.data = []
 
     def push(self, element):
         """
         Add the element ‘element’ at the top of stack
         :param element: element to add to stack
         """
-        self.data.append(element)
+        if len(self.data) < self._size:
+            self.data.append(element)
+        else:
+            print(f'Stack size must not be over {self._size}.')
 
     def pop(self):
         """
@@ -49,5 +59,3 @@ class Stack:
                  False if stack contains elements
         """
         return not bool(self.size())
-    
-    # ограничение по количеству объектов в стеке
